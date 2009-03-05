@@ -58,6 +58,9 @@ route "map.root :controller => 'welcome'"
 git :rm => "public/index.html"
 git :add => ".", :commit => "-m 'adding welcome controller'"
  
- 
-#Notes
-puts "\n\nRemember to set up the passenger prefpane!\n"
+if yes?("Deploy to Heroku?") do
+  heroku create --remote
+  git push heroku master
+  puts "\n\nTo push to heroku, use:\n\n\tgit push heroku master\n\nfollowed by\n\nheroku rake db:migrate"
+end
+puts "\n\nTo push to github, use:\n\tgit push\n\n"
