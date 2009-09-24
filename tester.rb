@@ -1,1 +1,0 @@
-puts "using tester template"
